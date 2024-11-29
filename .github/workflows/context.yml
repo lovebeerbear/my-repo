@@ -1,0 +1,7 @@
+name: Contexts
+on: workflow_dispatch
+jobs:
+  hori-print:
+    runs-on: ubuntu-lastest
+    steps:
+      - run: echo "${{ github.actor}}"
