@@ -1,10 +1,9 @@
-name: Generate functions
-on : [push]
-jobs: 
-  generate:
+name: JSON functions
+on: push
+jobs:
+  dump:
     runs-on: ubuntu-latest
     steps:
-      - run: printenv | grep '_FUNC'
+      - run: echo "${CONTEXT}"
         env:
-          FORK_FUNC: ${{ format('{0},{1}', 'fork', 'fork') }}
-          JOIN_FUNC: ${{ join(github.event, ',') }}
+          CONTEXT: ${{ toJson(github) }}
