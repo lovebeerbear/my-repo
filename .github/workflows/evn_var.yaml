@@ -4,7 +4,7 @@ jobs:
   compare:
     runs-on: ubuntu-latest
     env:
-      CONTAINS_FUNC: ${{ contains('Hello', 'el'') }}
+      CONTAINS_FUNC: ${{ contains('Hello', 'el') }}
     steps:
       - run: printenv | grep '_FUNC'
       - run: echo "${CONTAINS_FUNC}"
