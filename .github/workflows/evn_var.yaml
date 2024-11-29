@@ -1,9 +1,8 @@
-name: Status check functions
-on: [push]
+name: Conditions workflow
+on: push
 jobs:
-  fail:
+  skip-or-run:
+    if: ${{ github.actor == 'a'}}
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
-      - run: echo "Hello, world!"
-        if: ${{ failure() }}
+      - run: echo "This job is run by a"
