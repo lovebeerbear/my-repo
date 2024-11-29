@@ -1,10 +1,10 @@
-name: Variable
+name: Compare functions
 on: push
 jobs:
-  print:
+  compare:
     runs-on: ubuntu-latest
     env:
-      USERNAME: ${{ vars.USERNAME}}
+      CONTAINS_FUNC: ${{ contains('Hello', 'el'') }}
     steps:
-      - name: PRINT NAME
-        run: echo "${USERNAME}"
+      - run: printenv | grep '_FUNC'
+      - run: echo "${CONTAINS_FUNC}"
