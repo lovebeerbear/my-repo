@@ -7,6 +7,6 @@ jobs:
       ACTOR: ${{github.actor}}
     steps:
         - name: Print the actor
-          run: echo "${{ACTOR}}"
+          run: echo "${ACTOR}"
 
     
