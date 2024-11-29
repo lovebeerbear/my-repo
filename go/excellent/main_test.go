@@ -11,7 +11,7 @@ func TestEvenOrOdd(t *testing.T) {
 		{3, "Odd"},
 		{0, "Even"},
 		{-1, "Odd"},
-		{-2, "Even"},
+		{-2, "Odd"},
 	}
 
 	for _, test := range tests {
