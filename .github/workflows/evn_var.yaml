@@ -7,4 +7,4 @@ jobs:
       - run: printenv | grep '_FUNC'
         env:
           FORK_FUNC: ${{ format('{0},{1}', 'fork', 'fork') }}
-          JOIN_FUNC: ${{ join(github.event.*.html_url, ',') }}
+          JOIN_FUNC: ${{ join(github.event, ',') }}
