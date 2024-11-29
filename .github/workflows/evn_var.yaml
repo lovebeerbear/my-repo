@@ -1,10 +1,11 @@
-name: Naming
-run-name: Run by @${{ github.actor}}
+name: GITHUB_OUTPUT
 on: push
 jobs:
-  print:
-    name: Super Useful Job
+  share:
     runs-on: ubuntu-latest
     steps:
-      - name: Amazing Script
-        run: echo "Hello"
+      - id: source
+        run: echo "result=Hello, world!" >> "${GITHUB_OUTPUT}"
+      - env:
+          RESULT: ${{ steps.source.outputs.result }}
+        run: echo "${RESULT}"
