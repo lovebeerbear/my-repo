@@ -1,12 +1,10 @@
-name: Intermediate enviromnment variables
+name: Variable
 on: push
 jobs:
   print:
     runs-on: ubuntu-latest
     env:
-      ACTOR: ${{github.actor}}
+      USERNAME: ${{ var.USERNAME}}
     steps:
-        - name: Print the actor
-          run: echo "${ACTOR}"
-
-    
+      - name: PRINT NAME
+        run: echo "${USERNAME}"
