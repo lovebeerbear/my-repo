@@ -1,17 +1,12 @@
-name: Share job data
+name: Matrix
 on: push
 jobs:
-  before:
-    runs-on: ubuntu-latest
+  print:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - id: generate
-        run: echo "result=Hello" >> "${GITHUB_OUTPUT}"
-    outputs:
-      result2: ${{ steps.generate.outputs.result }}
-  after:
-    needs: before
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          RESULT: ${{ needs.before.outputs.result2 }}
-        run: echo "The result is ${RESULT}"
+      - name: Print OS
+        run: echo ${{ matrix.os }}
+        shell: bash
