@@ -7,11 +7,11 @@ jobs:
       - id: generate
         run: echo "result=Hello" >> "${GITHUB_OUTPUT}"
     outputs:
-      result: ${{ steps.generate.outputs.result }}
+      result2: ${{ steps.generate.outputs.result }}
   after:
     needs: before
     runs-on: ubuntu-latest
     steps:
       - env:
-          RESULT: ${{ needs.before.outputs.result }}
+          RESULT: ${{ needs.before.outputs.result2 }}
         run: echo "The result is ${RESULT}"
