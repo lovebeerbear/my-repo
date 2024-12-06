@@ -5,6 +5,9 @@ jobs :
     runs-on: ubuntu-latest
     steps:
       - run: |
+          echo "::group::Bash tracing"
           set -x
           date
           hostname
+          printenv
+          echo "::endgroup::"
