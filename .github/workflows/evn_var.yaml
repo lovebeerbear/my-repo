@@ -2,6 +2,7 @@ name : Static analysis
 on:
   pull_request:
     paths: ['.github/workflows/*.yml','.github/workflows/*.yaml']
+  workflow_dispatch: # 手動実行の設定
 defaults:
   run:
     shell: bash
