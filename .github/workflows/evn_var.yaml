@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           key: test-${{ runner.os }}-${{ github.sha }}
-          pasth: ${{ github.workspace}}/dummy
+          path: ${{ github.workspace}}/dummy
           restore-keys: test-${{ runner.os }}-
       - run: |
           if [[ -f "${GITHUB_WORKSPACE}/dummy"]]; then exit 0; fi
