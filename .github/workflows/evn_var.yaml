@@ -1,13 +1,19 @@
-name: Comment
-on: pull_request
+name: Environments
+on:
+  workflow_dispatch:
+    inputs:
+      environment-name:
+        type: environment
+        description: 'Environment name'
+        required: false
+        default: 'test'
 jobs:
-  comment:
+  print:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
+    environment: ${{ inputs.environment-name }}
+    env:
+      USERNME: ${{ vars.USERNAME}}
+      PASSWORD: ${{ secrets.PASSWORD }}
     steps:
-      - uses: actions/checkout@v4
-      - run: gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "${USERNAME}"
+      - run : echo "${PASSWORD:0:1} ${PASSWORD#?}"
