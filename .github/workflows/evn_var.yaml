@@ -1,12 +1,14 @@
-name: Matrix
+name: Multi-dimention matrix
 on: push
 jobs:
   print:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, macos-latest]
+        node: [18, 20]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Print OS
-        run: echo ${{ matrix.os }}
-        shell: bash
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: echo "${RUNNNER_OS}" && node --version 
