@@ -1,13 +1,10 @@
-name: Bash tracing
-on: push
-jobs : 
+name: Add mask
+on : push
+jobs:
   log:
     runs-on: ubuntu-latest
+    env:
+      PASSWORD: SuperSecretValue
     steps:
-      - run: |
-          echo "::group::Bash tracing"
-          set -x
-          date
-          hostname
-          printenv
-          echo "::endgroup::"
+      - run: echo "::add-mask::${PASSWORD}"
+      - run: echo ${PASSWORD}
