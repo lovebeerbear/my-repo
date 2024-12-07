@@ -17,13 +17,21 @@ outputs:
 runs:
   using: composite
   steps:
+    - run: echo "::group::Environment Variables"
+      shell: bash
     - run: printenv | sort
+      shell: bash
+    - run: echo "::endgroup::"
+      shell: bash
+    - run: echo "::group::CONTEXT Variables"
       shell: bash
     - run: echo "${CONTEXT}"
       shell: bash
       if : ${{ inputs.enable-context == 'true' }}
       env:
         CONTEXT: ${{ toJson(github) }}
+    - run: echo "::endgroup::"
+      shell: bash
     - id: current
       run: echo "date=$(date)" >> "${GITHUB_OUTPUT}"
       shell: bash
