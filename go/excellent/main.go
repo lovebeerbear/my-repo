@@ -1,8 +1,9 @@
 package main
 
-func EvenOrOdd(number int) string {
-	if number%2 == 0 {
-		return "Even"
-	}
-	return "Odd"
+import "fmt"
+
+var version string
+
+func main() {
+	fmt.Println("Version:%s\n", version)
 }

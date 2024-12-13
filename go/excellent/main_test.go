@@ -1,23 +1,25 @@
 package main
 
-import "testing"
+import (
+	"bytes"
+	"testing"
+)
 
-func TestEvenOrOdd(t *testing.T) {
-	tests := []struct {
-		input    int
-		expected string
-	}{
-		{2, "Even"},
-		{3, "Odd"},
-		{0, "Even"},
-		{-1, "Odd"},
-		{-2, "Even"},
+func TestMain(t *testing.T) {
+	var buf bytes.Buffer
+	version = "1.0.0"
+	expectedOutput := "Version:1.0.0\n"
+
+	// Redirect stdout
+	old := fmt.Println
+	defer func() { fmt.Println = old }()
+	fmt.Println = func(a ...interface{}) (n int, err error) {
+		return buf.WriteString(fmt.Sprintln(a...))
 	}
 
-	for _, test := range tests {
-		result := EvenOrOdd(test.input)
-		if result != test.expected {
-			t.Errorf("For input %d, expected %s but got %s", test.input, test.expected, result)
-		}
+	main()
+
+	if buf.String() != expectedOutput {
+		t.Errorf("expected %q but got %q", expectedOutput, buf.String())
 	}
 }
