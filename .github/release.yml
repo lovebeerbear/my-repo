@@ -1,0 +1,9 @@
+changelog:
+  categories:
+    - title: 拡張機能の変更
+      labels:
+        - enhancement
+    - title: バグ修正
+      labels:
+        - bug
+        - fixes
