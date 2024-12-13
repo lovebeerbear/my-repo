@@ -16,9 +16,9 @@ jobs:
         with:
           go-version: '1.22'
       - run: |
-          go build -ldflags "-X main.version=${VERSION}" -o "${RUNNER_TEMP}/example" go/excellent/main.go
+          go build -ldflags "-X main.version=${VERSION}" -o "${RUNNER_TEMP}/excellent" go/excellent/main.go
       - run: |
           gh release create "${VERSION}" -t "${VERSION}" --generate-notes
-          gh release upload "${VERSION}" "${RUNNER_TEMPF/example}"
+          gh release upload "${VERSION}" "${RUNNER_TEMP}/excellent"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
